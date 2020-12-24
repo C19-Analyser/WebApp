@@ -37,10 +37,7 @@ def submit_file():
 
             flash(filename)
 
-            try:
-                sendAlert('prediction')
-            except:
-                print("Mail sending error.")
+            sendAlert('prediction')
 
             return redirect('/')
 
