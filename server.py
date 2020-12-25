@@ -7,6 +7,16 @@ from werkzeug.utils import secure_filename
 from model import getPrediction,getModel
 import os
 
+import string
+import random
+
+import magic
+
+def get_random_string(length):
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -24,9 +34,15 @@ def submit_file():
             return redirect(request.url)
         if file:
             filename = secure_filename(file.filename) # Security essential !!
+            if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'],filename)):
+                imageType = magic.from_file('uploads/COVID19460.jpg', mime=True)
+                filename = get_random_string(3) + '_' + (filename.split('.',1))[0] + '.' + (imageType.split('/'))[1]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+            
             model = getModel()
+            print('model go')
             result = getPrediction(filename,model)
+            print(result)
 
             if result == '1.0' :
                 flash("Normal")
@@ -37,7 +53,11 @@ def submit_file():
 
             flash(filename)
 
-            sendAlert('prediction')
+            print('mail before')
+
+            sendAlert('prediction',filename=filename)
+
+            print('mail end')
 
             return redirect('/')
 
