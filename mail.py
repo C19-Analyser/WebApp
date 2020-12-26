@@ -18,7 +18,7 @@ def sendAlert(subject,user=defaultUser,filename="FILENAME",result="RESULT",model
     elif subject == 'prediction':
         msg.body = "L'utilisateur " + user['nom'] + " " + user['prenom'] + " a soumis le fichier " + filename + ".\nRésultat : "  + result + ".\nModel utilisé :" + modelType + "."
         with app.open_resource("uploads/" + filename) as fp:  
-            msg.attach("uploads/" + filename,magic.from_file('uploads/COVID19460.jpg', mime=True),fp.read())  
+            msg.attach("uploads/" + filename,magic.from_file('uploads/' + filename, mime=True),fp.read())  
         mail.send(msg)
         print('Mail sending')
     elif subject == 'rapport':

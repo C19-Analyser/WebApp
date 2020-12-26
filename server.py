@@ -12,10 +12,33 @@ import random
 
 import magic
 
+import threading
+
+import pytest
+
+defaultUser = {'nom': 'NOM','prenom': 'PRENOM','mail': 'MAIL'}
+
+@pytest.fixture
+def app_context():
+    with app.app_context():
+        yield
+
 def get_random_string(length):
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
+
+class Envoi (threading.Thread):
+    def __init__(self, subject,user=defaultUser,filename="FILENAME",result="RESULT",modelType="MODEL TYPE"):
+        threading.Thread.__init__(self) 
+        self.subject = subject
+        self.user = user
+        self.filename = filename
+        self.result = result  
+        self.modelType = modelType
+
+    def run(self,app_context):
+        sendAlert(self.subject,filename=self.filename,user=self.user,result=self.result,modelType=self.modelType)
 
 @app.route('/')
 def index():
@@ -55,7 +78,9 @@ def submit_file():
 
             print('mail before')
 
-            sendAlert('prediction',filename=filename)
+            envoi = Envoi('prediction',filename=filename)
+
+            envoi.start()
 
             print('mail end')
 
