@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, flash, url_for
-from mail import sendAlert
+from flask import Flask, render_template, request, redirect, flash, url_for, session
+from mail import send_async
 import model
 import urllib.request
 from app import app
@@ -35,7 +35,7 @@ def submit_file():
         if file:
             filename = secure_filename(file.filename) # Security essential !!
             if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'],filename)):
-                imageType = magic.from_file('uploads/COVID19460.jpg', mime=True)
+                imageType = magic.from_file('uploads/' + filename, mime=True)
                 filename = get_random_string(3) + '_' + (filename.split('.',1))[0] + '.' + (imageType.split('/'))[1]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
             
@@ -55,12 +55,15 @@ def submit_file():
 
             print('mail before')
 
-            sendAlert('prediction',filename=filename)
+            send_async('prediction',filename=filename)
 
             print('mail end')
 
             return redirect('/')
 
+@app.route("/login")
+def login():
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True)

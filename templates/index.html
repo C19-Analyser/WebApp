@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html>
+{% block head %}
 
-    <head>
+    <title> C19-Analyser </title>
 
-        <title> C19-Analyser </title>
+{% endblock %}
 
-    </head>
+{% block body %}
 
-    <body>
+    <div id="indexContent">
 
         <h1>  Keras based image classifier </h1>
 
@@ -16,13 +16,13 @@
 
         <p>
             {% with messages = get_flashed_messages() %}
-              {% if messages %}
+            {% if messages %}
                 File: {{ messages[1] }}
                 Result: {{ messages[0] }}
-              {% endif %}
+            {% endif %}
             {% endwith %}
         </p>
-        
+
         <form method="post" action="/" enctype="multipart/form-data">
             <dl>
             <p>
@@ -34,6 +34,6 @@
             </p>
         </form>
 
-    </body>
+    </div>
 
-</html>
+{% endblock %}
