@@ -9,11 +9,11 @@ import os
 
 from sqlalchemy.exc import SQLAlchemyError
 
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 
 from dbmanager import User
 
-from forms import SigninForm
+from forms import SigninForm, SignupForm
 
 import string
 import random
@@ -88,30 +88,58 @@ def login():
     )
 
 @app.route("/admin",methods=['GET'])
+@login_required
 def getAdminBoard():
     return render_template('admin.html')
 
 
 @app.route("/register")
+@login_required
 def register():
+    
+    form = SignupForm()
+    
     try:
-        user = User(
-                name="name name",
-                email="mail@mail"
-            )
-        user.set_password("pass")
-        db.session.add(user)
-        db.session.commit()
+        if form.validate_on_submit():
+            existing_user = User.query.filter_by(email=form.email.data).first()
+            if existing_user is None:
+                user = User(
+                    name=form.name.data,
+                    email=form.email.data
+                )
+                user.set_password(form.password.data)
+                db.session.add(user)
+                db.session.commit()
+                return redirect("/admin")
+            else:
+                flash('A user already exists with that email address.')
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
         print(error)
-    return render_template("index.html")
+        flash('Database error.')
+
+    return render_template(
+        'register.html',
+        form=form
+    )
+
+@app.route("/logout")
+@login_required
+def logout():
+    """User log-out logic."""
+    logout_user()
+    return redirect(url_for('auth_bp.login'))
 
 @login_manager.user_loader
 def load_user(user_id):
     if user_id is not None:
         return User.query.get(user_id)
     return None
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    flash('You must be logged in to view that page.')
+    return redirect('/login')
 
 if __name__ == "__main__":
     app.run(debug=True)
