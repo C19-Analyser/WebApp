@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, flash, url_for
-from mail import sendAlert
+from flask import Flask, render_template, request, redirect, flash, url_for, session
+from mail import send_async
 import model
 import urllib.request
 from app import app
@@ -12,33 +12,10 @@ import random
 
 import magic
 
-import threading
-
-import pytest
-
-defaultUser = {'nom': 'NOM','prenom': 'PRENOM','mail': 'MAIL'}
-
-@pytest.fixture
-def app_context():
-    with app.app_context():
-        yield
-
 def get_random_string(length):
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
-
-class Envoi (threading.Thread):
-    def __init__(self, subject,user=defaultUser,filename="FILENAME",result="RESULT",modelType="MODEL TYPE"):
-        threading.Thread.__init__(self) 
-        self.subject = subject
-        self.user = user
-        self.filename = filename
-        self.result = result  
-        self.modelType = modelType
-
-    def run(self,app_context):
-        sendAlert(self.subject,filename=self.filename,user=self.user,result=self.result,modelType=self.modelType)
 
 @app.route('/')
 def index():
@@ -58,7 +35,7 @@ def submit_file():
         if file:
             filename = secure_filename(file.filename) # Security essential !!
             if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'],filename)):
-                imageType = magic.from_file('uploads/COVID19460.jpg', mime=True)
+                imageType = magic.from_file('uploads/' + filename, mime=True)
                 filename = get_random_string(3) + '_' + (filename.split('.',1))[0] + '.' + (imageType.split('/'))[1]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
             
@@ -78,14 +55,15 @@ def submit_file():
 
             print('mail before')
 
-            envoi = Envoi('prediction',filename=filename)
-
-            envoi.start()
+            send_async('prediction',filename=filename)
 
             print('mail end')
 
             return redirect('/')
 
+@app.route("/login")
+def login():
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True)
