@@ -9,7 +9,7 @@ import os
 
 from sqlalchemy.exc import SQLAlchemyError
 
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 
 from dbmanager import User
 
@@ -87,13 +87,13 @@ def login():
         form=form
     )
 
-@app.route("/admin",methods=['GET'])
+@app.route("/admin")
 @login_required
 def getAdminBoard():
     return render_template('admin.html')
 
 
-@app.route("/register")
+@app.route("/register",methods=['GET', 'POST'])
 @login_required
 def register():
     
@@ -126,9 +126,8 @@ def register():
 @app.route("/logout")
 @login_required
 def logout():
-    """User log-out logic."""
     logout_user()
-    return redirect(url_for('auth_bp.login'))
+    return redirect('/')
 
 @login_manager.user_loader
 def load_user(user_id):
