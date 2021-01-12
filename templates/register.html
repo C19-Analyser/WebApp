@@ -2,17 +2,16 @@
 
 {% block head %}
 
-    <title> C19 Add Users </title>
+    <title> Connexion </title>
 
 {% endblock %}
 
 {% block body %}
 
-    <div class="formwrapper">
+    <div class="container">
         <h2 class="title">Add user</h2>
-        <form method="POST" action="/register">
-
-        <fieldset class="form-field">
+        <form class="form" method="POST" action="/register">
+        <fieldset class=" form-group">
             {{ form.name.label }}
             {{ form.name }}
             {% if form.name.errors %}
@@ -24,7 +23,7 @@
             {% endif %}
         </fieldset>
 
-        <fieldset class="form-field">
+        <fieldset class="form-group">
             {{ form.email.label }}
             {{ form.email }}
             {% if form.email.errors %}
@@ -36,7 +35,7 @@
             {% endif %}
         </fieldset>
 
-        <fieldset class="form-field">
+        <fieldset class="form-group">
             {{ form.password.label }}
             {{ form.password }}
             {% if form.password.errors %}
@@ -48,7 +47,7 @@
             {% endif %}
         </fieldset>
 
-        <fieldset class="form-field">
+        <fieldset class="form-group">
             {{ form.confirm.label }}
             {{ form.confirm }}
             {% if form.confirm.errors %}

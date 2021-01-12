@@ -1,30 +1,135 @@
-#indexContent {
 
-    margin: 5%;
+.logo{
+    height: 75px;
+    width: 150px;
+    margin: 0;
+}
+
+.card-title{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+.lien{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-style: bold;
+    text-decoration: none;
+    color:white;
+}
+
+.lien:hover{
+    color:white;
+}
+.lien:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #1db487;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+  }
+.lien:hover:after { transform: scaleX(1); }
+
+.jumbotron{
+    height:30em;
+    background-image: linear-gradient(to top, #ffffff, #eef0fd, #d6e2fc, #b8d6f9, #92ccf5);
+}
+
+.c19{
+    width: 440px;
+    height: 300px;
+}
+
+.card{
+    font-family: 'Montserrat Alternates', sans-serif;
+    top:-18em;
+    font-style: bold;
+    color:rgb(24, 24, 104);
+    margin-left: 10em;
     text-align: center;
-    border: black solid 2px;
-
+    box-shadow: 0 5px 5px -5px #333;
+    position: relative;
+    margin-top:1em;
 }
 
-.formwrapper {
+h2{
+    color:white;
+}
 
+.bg-transparent.scrolled{
+    background-color: #AAC4DB !important;
+    transition: 1s ease-in-out;
+}
+
+.login-btn{
+    box-shadow: 2px 2px 37px -9px rgba(0,0,0,0.75);
+    border:0px;
+    background: radial-gradient( #007CFF, #0344BD);
+    opacity: 80%;
+}
+.login-btn:hover{
+    opacity: 100%;
+}
+.h5-b{
+    color: #1384E2;
+    margin-left: 10px;
+}
+.carousel{
+color:rgb(231, 242, 255);
+justify-content: left;
+text-align: left;
+margin-left: 5%;
+text-shadow: 2px 2px 5px rgb(124, 135, 167);
+min-width: 35%;
+padding: 100px;
+font-family: 'Rajdhani', sans-serif;
+}
+.logo-2{
+    height: 250px;
+    width: 500px;
+    opacity: 50%;
+}
+.label-file {
+    cursor: pointer;
+    color: #00b1ca;
+    font-weight: bold;
+}
+.label-file:hover {
+    color: blue;
+}
+.input-file{
+    display: none;
+}
+.form-2{
+    background-color: rgb(246, 246, 250);
+    opacity: 80%;
+    padding:30px;
+    border-radius: 10px;
+    max-width: 40em;
+    justify-content: center;
     text-align: center;
-    border: black solid 2px;
-    margin-top: 20%;
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-bottom: 5px;
-
+    min-height: 20em;
+    vertical-align: center;
 }
 
-.form-field {
-
-    margin: 5px;
-
+.card-title-2{
+    font-family: 'Montserrat Alternates', sans-serif;
+    color:rgb(26, 26, 102);
 }
-
-fieldset {
-
-    border: none;
-
+.position-row{
+    top:-20em;
+    position: relative;
+}
+.essai{
+    opacity: 20%;
+    width: 180px;
+    margin-left: 35%;
+}
+.ligne{
+    top:-7px;
+    width: 33%;
+}
+.font{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 20px;
+    color: rgb(9, 104, 46);
 }
