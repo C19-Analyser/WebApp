@@ -16,10 +16,10 @@
 <body>
     <header>
         <nav class=" bg-transparent navbar navbar-expand-lg fixed-top">
-            <a class="navbar-brand nav-item active" href="about"><img class=logo src="../static/logo.png"> </a>
+            <a class="navbar-brand nav-item active" href="/"><img class=logo src="../static/logo.png"> </a>
             <ul class="navbar-nav justify-content-end collapse navbar-collapse">
                 <li class="nav-item">
-                    <a class="nav-link lien" href="/">Analyser</a>
+                    <a class="nav-link lien" href="about">Analyser</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link lien" href="register">Inscription</a>
@@ -27,12 +27,33 @@
                 <li class="nav-item ">
                     <a class="btn" style="background-color:#072453; color:white; font-family: 'Montserrat Alternates', sans-serif;" href="login" role="button">Connexion</a>
                 </li>
+                <li li class="nav-item deco">
+                    <a href="/logout"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-excel" viewBox="0 0 16 16">
+                        <path d="M5.18 4.616a.5.5 0 0 1 .704.064L8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 0 1 .064-.704z"/>
+                        <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                      </svg></a>
+                </li>
             </ul>
         </nav>
         <div class="col jumbotron text-center jumbotron-fluid">
         </div>
     </header>
     {% block body %}{% endblock %}
+    <footer class="monfooter text-light">
+        <div class="container" style="font-family: 'Rajdhani', sans-serif;">
+          <div class="row">
+            <div class="col">
+              <h5 class="text-center">ASCLEPIA et C19 Analyser</h6>
+                <p>Asclepia est un logiciel de gestion partagée des dossiers patients</p>
+            </div>
+            <div class="col text-center">
+              <h5>QUI SOMMES NOUS</h6>
+              <div class="text-center ">JDIDI Chourouk GUILLAUME Hugo DELAVIGNE Baudouin THIBAULT Guillaume LECOMTE Loïc</div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center petitfooter"> Janvier 2021</div>
+      </footer>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

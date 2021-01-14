@@ -10,8 +10,8 @@
 
 <div class="container">
     <div class="row position-row">
-        <div class="col">
-            <h21 class="card-title-2">Inscription</h2>
+        <div class="col" style="margin-left: 20%;">
+            <h2 class="card-title-2">Inscription d'un nouvel utilisateur</h2>
             <form class="form-2" method="POST" action="/register">
                 <img style="height: 150px;width:300px" src="../static/logo.png">
                 <fieldset class=" form-group">
@@ -51,8 +51,8 @@
                 </fieldset>
 
                 <fieldset class="form-group">
-                    {{ form.confirm.label }}
-                    {{ form.confirm }}
+                    {{ form.confirm.label (class_="form-label") }}
+                    {{ form.confirm (class_="form-control") }}
                     {% if form.confirm.errors %}
                     <ul class="errors">
                         {% for error in form.confirm.errors %}

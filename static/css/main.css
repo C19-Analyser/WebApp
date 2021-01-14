@@ -130,7 +130,10 @@ font-family: 'Rajdhani', sans-serif;
     background-color:  rgba(240, 240, 240, 0.89);
     border:none;
 }
-
+.font{
+    font-family: 'Montserrat Alternates', sans-serif;
+    color:rgb(26, 26, 102);
+}
 .form-label{
     color:rgb(165, 164, 164);
     font-family: 'Rajdhani', sans-serif;
@@ -233,3 +236,19 @@ margin-right: auto;
 .back{
     background: linear-gradient(90deg, rgba(244,255,255,1) 0%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 26%, rgba(255,255,255,1) 79%, rgba(239,252,255,1) 100%);
 }
+.card-body{
+    padding:1em!important;
+}
+.deco{
+    background-color: rgb(255, 255, 255);
+    margin-left: 10px;
+    color:white;
+}
+.monfooter {
+    padding-top: 2em;
+    background-color: #5A5A57;
+  }
+
+  .petitfooter {
+    background-color: #292929;
+  }
