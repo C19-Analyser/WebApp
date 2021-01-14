@@ -1,5 +1,5 @@
 name: c19analyse
-type: python:2.8
+type: python:3.8
 
 web:
   commands:
