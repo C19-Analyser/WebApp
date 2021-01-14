@@ -1,0 +1,29 @@
+name: app
+type: python:2.7
+
+web:
+  commands:
+    start: "gunicorn -b $PORT project.wsgi:application"
+  locations:
+    "/":
+      root: ""
+      passthru: true
+      allow: false
+    "/static":
+      root: "static/"
+      allow: true
+
+hooks:
+  build: |
+    pip install -r requirements.txt
+    pip install -e .
+
+mounts:
+   tmp:
+       source: local
+       source_path: tmp
+   logs:
+       source: local
+       source_path: logs
+
+disk: 512
