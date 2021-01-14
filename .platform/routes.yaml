@@ -1,9 +1,3 @@
-- paths:
-  - corsPolicy: allow_all
-    path: /
-    upstreamService:
-      name: c19analyse
-      namespace: {{ cluster.metadata.namespaces.user }}
-      path: /
-      port: 80
-  subdomain: c19analyse
+handlers:
+- url: .*  # This regex directs all routes to main.app
+   script: server.py
