@@ -1,0 +1,9 @@
+- paths:
+  - corsPolicy: allow_all
+    path: /
+    upstreamService:
+      name: app
+      namespace: {{ cluster.metadata.namespaces.user }}
+      path: /
+      port: 80
+  subdomain: app
