@@ -1,9 +1,10 @@
-name: app
-type: python:2.7
+name: c19analyse
+type: python:2.8
 
 web:
   commands:
-    start: "gunicorn -b $PORT project.wsgi:application"
+    #start: "gunicorn -b $PORT project.wsgi:application"
+    start: "python server.py"
   locations:
     "/":
       root: ""
