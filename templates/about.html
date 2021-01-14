@@ -2,14 +2,113 @@
 
 {% block head %}
 
-    <title> About us </title>
+<title> About us </title>
 
 {% endblock %}
 
 {% block body %}
-
-    <div> About page </div>
-
-    <div> Je te laisse faire preuve de creativite </div>
-
+<div class="back">
+  <div class="container container-d">
+    <div class="row row-1" style="display: flex; justify-content: center;">
+      <div class="col ">
+        <div class="banniere">
+          <h1> C19-Analyser </h1>
+          <h1>Le nouveau module d'Asclepia, permettant de combattre le <h1 style="color: rgb(0, 9, 128);"> COVID-19
+            </h1>
+          </h1>
+        </div>
+        <div style="margin-top:3em;">
+          <a class="btn btn-test" href="/" role="button">Tester</a>
+          <a class="btn btn-inscription" href="/" role="button">Inscription</a>
+        </div>
+      </div>
+      <div class="col">
+        <img style="height: 25em;width:35em" src="../static/co19-2.png">
+      </div>
+    </div>
+    <a class="more" href="#down"> <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+        class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z" />
+      </svg></a>
+    <div id="down" class="row">
+      <h1 class="annonces"> Mais qui sommes nous ?</h1>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <h1 class="number">5</h1>
+          <p class="text-1">Etudiants</p>
+        </div>
+        <img style="height: 10em;width:25em" src="../static/Logo-Efrei-2017-Fr-Web.png">
+      </div>
+      <div class="col">
+        <div class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class=" carousel-item active" style="padding:20px;">
+              <h3 class="name">Hugo GUILLAUME</h2>
+                <p class="desc"> Chef de projet </p>
+            </div>
+            <div class="p-3 carousel-item">
+              <h3 class="name">Loïc LECOMTE</h2>
+                <p class="desc"> Le BIG BOSS </p>
+            </div>
+            <div class="carousel-item">
+              <h3 class="name">Baudouin DELAVIGNE</h2>
+                <p class="desc"> Boh bah il est la </p>
+            </div>
+            <div class="carousel-item">
+              <h3 class="name">Guillaume THIBAULT</h2>
+                <p class="desc"> Trop gentil </p>
+            </div>
+            <div class="carousel-item">
+              <h3 class="name">Chourouk JDIDI</h2>
+                <p class="desc"> Trop gentil </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h1 class="annonces" style="margin-top:2em; margin-bottom: 2em;"> Nos partenaires </h1>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../static/co19-2.png" alt="Card image cap">
+          <h5 class="card-title">Name</h5>
+          <div class="card-body">
+            <p class="card-text">Desc</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../static/co19-2.png" alt="Card image cap">
+          <h5 class="card-title">Name</h5>
+          <div class="card-body">
+            <p class="card-text">Desc</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="../static/co19-2.png" alt="Card image cap">
+          <h5 class="card-title">Name</h5>
+          <div class="card-body">
+            <p class="card-text">Desc</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h1 class="annonces" style="margin-top:5em; margin-bottom: 3em;"> Notre vidéo </h1>
+    </div>
+    <div class="row">
+      <iframe width="966" height="543" src="https://www.youtube.com/embed/4GaQ1FFrwbk" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
 {% endblock %}
