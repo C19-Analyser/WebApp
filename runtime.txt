@@ -1,2 +1,2 @@
 python-3.7.9
-wheel-0.35
+wheel>=0.35
