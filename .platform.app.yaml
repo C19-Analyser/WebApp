@@ -3,8 +3,8 @@ type: python:3.8
 
 web:
   commands:
-    #start: "gunicorn -b $PORT project.wsgi:application"
-    start: "python server.py"
+    start: "gunicorn -b $PORT project.wsgi:application"
+    #start: "python3 server.py"
   locations:
     "/":
       root: ""
