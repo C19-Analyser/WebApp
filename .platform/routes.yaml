@@ -2,7 +2,7 @@
   - corsPolicy: allow_all
     path: /
     upstreamService:
-      name: app
+      name: c19analyse
       namespace: {{ cluster.metadata.namespaces.user }}
       path: /
       port: 80
