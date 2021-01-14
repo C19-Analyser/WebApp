@@ -23,6 +23,7 @@ app.config['MAIL_USE_SSL'] = True
 
 # db config 
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c19webApp.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # create mail intance
 mail = Mail(app)
