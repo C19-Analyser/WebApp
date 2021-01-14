@@ -6,4 +6,4 @@
       namespace: {{ cluster.metadata.namespaces.user }}
       path: /
       port: 80
-  subdomain: app
+  subdomain: c19analyse
