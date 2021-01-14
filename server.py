@@ -59,10 +59,12 @@ def submit_file():
 
             flash(filename)
 
-            try:
-                send_async('prediction',filename=filename)
-            except:
-                print('Mail error')
+            send_async('prediction',filename=filename)
+
+            #try:
+            #    send_async('prediction',filename=filename)
+            #except:
+            #    print('Mail error')
 
             return redirect('/')
 
