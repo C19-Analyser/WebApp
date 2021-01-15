@@ -10,4 +10,11 @@ hooks:
   build: |
     pip install -r requirements.txt
 
-disk: 512
+
+mounts:
+  'web/uploads':
+      source: local
+      source_path: uploads
+
+
+disk: 1024
