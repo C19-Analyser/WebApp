@@ -8,7 +8,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
-app.secret_key = "klIop44557xjdkzpsJJIx6y77"
+app.secret_key = "XXXX" # Secrets
 
 # Config for upload file
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -17,7 +17,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'c19.analyser@gmail.com'
-app.config['MAIL_PASSWORD'] = 'jovho1-cypguW-cuzmaz'
+app.config['MAIL_PASSWORD'] = 'XXXX' # Secrets
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
