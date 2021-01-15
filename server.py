@@ -2,9 +2,9 @@ from flask import Flask, render_template, request, redirect, flash, url_for, ses
 from mail import send_async
 import model
 import urllib.request
-from app import app,db,login_manager
+from app import app, db, login_manager
 from werkzeug.utils import secure_filename
-from model import getPrediction,getModel
+from model import getPrediction, getModel
 import os
 
 from sqlalchemy.exc import SQLAlchemyError
@@ -20,10 +20,12 @@ import random
 
 import magic
 
+
 def get_random_string(length):
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
+
 
 @app.route('/')
 def index():
@@ -41,16 +43,17 @@ def submit_file():
             flash('No file selected for uploading')
             return redirect(request.url)
         if file:
-            filename = secure_filename(file.filename) # Security essential !!
-            if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'],filename)):
+            filename = secure_filename(file.filename)  # Security essential !!
+            if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], filename)):
                 imageType = magic.from_file('uploads/' + filename, mime=True)
-                filename = get_random_string(3) + '_' + (filename.split('.',1))[0] + '.' + (imageType.split('/'))[1]
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-            
-            model = getModel()
-            result = getPrediction(filename,model)
+                filename = get_random_string(
+                    3) + '_' + (filename.split('.', 1))[0] + '.' + (imageType.split('/'))[1]
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-            if result == '1.0' :
+            model = getModel()
+            result = getPrediction(filename, model)
+
+            if result == '1.0':
                 flash("Normal")
             elif result == '0.0':
                 flash("Covid")
@@ -59,16 +62,17 @@ def submit_file():
 
             flash(filename)
 
-            send_async('prediction',filename=filename)
+            send_async('prediction', filename=filename)
 
-            #try:
+            # try:
             #    send_async('prediction',filename=filename)
-            #except:
+            # except:
             #    print('Mail error')
 
             return redirect('/')
 
-@app.route("/login",methods=['GET', 'POST'])
+
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = SigninForm()
 
@@ -76,21 +80,22 @@ def login():
         return redirect('/admin')
 
     if form.validate_on_submit():
-        
-        user = User.query.filter_by(email=form.email.data).first()  
-        
+
+        user = User.query.filter_by(email=form.email.data).first()
+
         if user and user.check_password(password=form.password.data):
             login_user(user)
             return redirect('/admin')
         else:
             flash('Invalid username/password combination')
-        
+
         return redirect('/admin')
-    
+
     return render_template(
         'login.html',
         form=form
     )
+
 
 @app.route("/admin")
 @login_required
@@ -98,12 +103,12 @@ def getAdminBoard():
     return render_template('admin.html')
 
 
-@app.route("/register",methods=['GET', 'POST'])
+@app.route("/register", methods=['GET', 'POST'])
 @login_required
 def register():
-    
+
     form = SignupForm()
-    
+
     try:
         if form.validate_on_submit():
             existing_user = User.query.filter_by(email=form.email.data).first()
@@ -128,9 +133,11 @@ def register():
         form=form
     )
 
+
 @app.route("/about")
 def about():
     return render_template('about.html')
+
 
 @app.route("/logout")
 @login_required
@@ -138,16 +145,19 @@ def logout():
     logout_user()
     return redirect('/')
 
+
 @login_manager.user_loader
 def load_user(user_id):
     if user_id is not None:
         return User.query.get(user_id)
     return None
 
+
 @login_manager.unauthorized_handler
 def unauthorized():
     flash('You must be logged in to view that page.')
     return redirect('/login')
 
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port='8888')
+    app.run(host='0.0.0.0', port='8888')
