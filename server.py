@@ -100,7 +100,10 @@ def login():
 @app.route("/admin")
 @login_required
 def getAdminBoard():
-    return render_template('admin.html')
+    
+    images = os.listdir('uploads')
+    
+    return render_template('admin.html',images)
 
 
 @app.route("/register", methods=['GET', 'POST'])
