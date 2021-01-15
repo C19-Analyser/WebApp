@@ -64,11 +64,6 @@ def submit_file():
 
             send_async('prediction', filename=filename)
 
-            # try:
-            #    send_async('prediction',filename=filename)
-            # except:
-            #    print('Mail error')
-
             return redirect('/')
 
 
@@ -103,7 +98,7 @@ def getAdminBoard():
     
     images = os.listdir('uploads')
     
-    return render_template('admin.html',images)
+    return render_template('admin.html',images=images)
 
 
 @app.route("/register", methods=['GET', 'POST'])

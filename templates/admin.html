@@ -2,33 +2,41 @@
 
 {% block head %}
 
-    <title> Admin C19 </title>
+<title> Admin C19 </title>
 
 {% endblock %}
 
 {% block body %}
 
-    <div id="adminContent">
+<div class="container-fluid">
 
-        <h1>  Admin section </h1>
+    <div class="row">
+
+        <h1> Admin section </h1>
 
         <h2> En cours de construction... </h2>
 
-        <section>
+    </div>
 
+    <div class="row">
+
+        <ul>
             {% for image in images %}
 
-            <p> {% image %} </p>
+            <li> {{ image }} </li>
+            <input type="button" value="Supprimer">
 
             {% endfor %}
-        </section>
-
-        <p>
-            En cours de construction...
-
-            <a href="/register"> Add users </a>
-        </p>
+        </ul>
 
     </div>
+
+    <div class="row">
+        En cours de construction...
+
+        <a href="/register"> Add users </a>
+    </div>
+
+</div>
 
 {% endblock %}
