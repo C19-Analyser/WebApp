@@ -2,28 +2,11 @@ name: c19analyse
 type: python:3.8
 
 web:
-  commands:
-    start: "gunicorn -b $PORT server.py:app"
-    
-  locations:
-    "/":
-      root: ""
-      passthru: true
-      allow: false
-    "/static":
-      root: "static/"
-      allow: true
+    commands:
+        start: python server.py
 
 hooks:
   build: |
     pip install -r requirements.txt
-
-mounts:
-   tmp:
-       source: local
-       source_path: tmp
-   logs:
-       source: local
-       source_path: logs
 
 disk: 512
