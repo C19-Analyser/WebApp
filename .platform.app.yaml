@@ -13,7 +13,8 @@ hooks:
 
 mounts:
   'web/uploads':
-      source: local
+      source: service
+      service: files
       source_path: uploads
 
 
