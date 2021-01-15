@@ -3,8 +3,7 @@ type: python:3.8
 
 web:
     commands:
-        #start: python server.py
-        start: gunicorn --bind 0.0.0.0:8888 wsgi:app
+        start: python server.py
 
 hooks:
   build: |
