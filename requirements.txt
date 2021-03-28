@@ -24,7 +24,7 @@ h5py==2.10.0
 idna==2.10
 iniconfig==1.1.1
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 Keras-Preprocessing==1.1.2
 libmagic==1.0
 Markdown==3.3.3
