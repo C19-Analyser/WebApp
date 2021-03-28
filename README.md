@@ -15,5 +15,3 @@ Follow the next instructions :
 
 For the moment this application can only differentiate between X-ray images of healthy and covid patients. It will be updated soon. 
 The final goal is to be able to integrate this tool to the asclépia web applications via a microservice architecture. 
-
-### Developed by : /4875676f204775696c6c61756d65
